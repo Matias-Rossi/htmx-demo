@@ -1,0 +1,43 @@
+
+
+<main>
+  <button class="pointer btn btn-secondary my-2" hx-get="/guests" hx-target="main">Go back</button>
+
+  <div class="my-2" id="response">
+
+  </div>
+
+  <form class="my-2 card p-4 mx-5" hx-post="/guests" target="#response" onsubmit="alert('Guest created');">
+    <!-- National ID -->
+    <div class="form-group">
+      <label for="inputNationalId">National ID</label>
+      <input class="w-100" type="text" name="nationalId" id="inputNationalId" placeholder="Enter national ID">
+    </div>
+    <!-- First name -->
+    <div class="form-group">
+      <label for="inputFirstName">First name</label>
+      <input class="w-100" type="text" name="firstName" id="inputFirstName" placeholder="Enter first name">
+    </div>
+    <!-- Last name -->
+    <div class="form-group">
+      <label for="inputLastName">Last name</label>
+      <input class="w-100" type="text" name="lastName" id="inputLastName" placeholder="Enter last name">
+    </div>
+    <!-- DoB -->
+    <div class="form-group">
+      <label for="inputDateOfBirth">Date of birth</label>
+      <input class="w-100" type="date" name="dateOfBirth" id="inputDateOfBirth">
+    </div>
+    <!-- Email -->
+    <div class="form-group">
+      <label for="inputEmail">Email</label>
+      <input class="w-100" type="email" name="email" id="inputEmail" placeholder="Enter email">
+    </div>
+    <!-- Phone Number -->
+    <div class="form-group">
+      <label for="inputPhoneNumber">Phone Number</label>
+      <input class="w-100" type="text" name="phoneNumber" id="inputPhoneNumber" placeholder="Enter phone number">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</main>

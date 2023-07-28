@@ -1,0 +1,56 @@
+<h3>Guests</h3>
+
+<div class="btn btn-primary pointer my-2" hx-get="/guests/newGuest" hx-target="main">New Guest</div>
+
+<div class="my-2" id="response">
+
+</div>
+
+<table class="table" id="guestTable">
+    <thead>
+        <tr>
+            <th>Guest ID</th>
+            <th>National ID</th>
+            <th>Last & first name</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>See reservations</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="guest, i: ${guests}">
+            <th scope="row"
+                th:text="${guest.guestId}"
+                th:style="${i.odd} ? 'bg-light' : 'bg-white'"
+            ></th>
+            <td th:text="${guest.nationalId}"></td>
+            <td th:text="${guest.lastName} +', '+ ${guest.firstName}"></td>
+            <td th:text="${guest.email}"></td>
+            <td th:text="${guest.phoneNumber}"></td>
+            <td>Reservations</td>
+            <td>
+                <i
+                    th:hx-delete="'/guests/' + ${guest.guestId}"
+                    th:hx-confirm="'Confirm deletion of ' + ${guest.firstName} + ' ' + ${guest.lastName} + '?'"
+                    hx-target="closest tr"
+                    class="fa fa-solid fa-trash pointer">
+                </i>
+            </td>
+
+        </tr>
+    </tbody>
+    <!--<tfoot>
+    <tr>
+        <th id="loadMore"
+            hx-get="/guests/getGuests"
+            hx-target="tbody"
+            hx-swap="beforeend settle:1s"
+            scope="row">Load more...</th>
+    </tr>
+    </tfoot>-->
+</table>
+<!--
+
+</body>
+</html>-->

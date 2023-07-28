@@ -1,0 +1,11 @@
+
+    <tr th:each="guest, i: ${guests}">
+        <th scope="row"
+            th:text="${guest.guestId}"
+            th:style="${i.odd} ? 'bg-light' : 'bg-white'"
+        ></th>
+        <td th:text="${guest.nationalId}"></td>
+        <td th:text="${guest.lastName}"></td>
+        <td th:text="${guest.firstName}"></td>
+        <td>Reservations</td>
+    </tr>

@@ -1,0 +1,65 @@
+<h3>Rooms</h3>
+
+<div class="btn btn-primary pointer my-2" hx-get="/rooms/newRoom" hx-target="main">Add room</div>
+
+<div class="my-2" id="response">
+
+</div>
+
+<style>
+  .table td, .table th {
+    vertical-align: middle;
+  }
+</style>
+
+<table class="table" id="roomTable">
+  <thead>
+  <tr>
+    <th>Room ID</th>
+    <th>Floor</th>
+    <th>Currently reserved by</th>
+    <th>Available from</th>
+    <th>Details</th>
+    <th>See reservations</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="room, i: ${rooms}">
+    <th scope="row"
+        th:text="${room.id}"
+        th:style="${i.odd} ? 'bg-light' : 'bg-white'"
+    ></th>
+    <td th:text="${room.floor}"></td>
+    <td th:text="${'pending'} +', '+ ${'pending'}"></td>
+    <td th:text="${'pending'}"></td>
+    <td class="flex">
+      <i class="fa fa-solid fa-bed"></i>
+      <p class="d-inline" th:text="${room.getCapacity()}"></p>
+    </td>
+    <td>
+      <button class="btn">
+        Reservations
+        <i class="fa fa-solid fa-arrow-up-right-from-square"></i>
+      </button>
+    </td>
+    <td>
+      <i class="fa-solid fa-pen-to-square"></i>
+    </td>
+
+  </tr>
+  </tbody>
+  <!--<tfoot>
+  <tr>
+      <th id="loadMore"
+          hx-get="/guests/getGuests"
+          hx-target="tbody"
+          hx-swap="beforeend settle:1s"
+          scope="row">Load more...</th>
+  </tr>
+  </tfoot>-->
+</table>
+<!--
+
+</body>
+</html>-->

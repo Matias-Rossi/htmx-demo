@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservations manager</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href=
+            "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+
+
+    <style>
+        .pointer {
+            cursor: pointer;
+        }
+
+        main {
+            margin-left: 3rem;
+            margin-right: 3rem;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<h1>Hotel Management</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar-brand pointer" hx-target="main" hx-get="/reservations">Reservations</div>
+    <div class="navbar-brand pointer" hx-target="main" hx-get="/rooms">Rooms</div>
+    <div class="navbar-brand pointer" hx-target="main" hx-get="/guests">Guests</div>
+</nav>
+
+<main>
+
+</main>
+
+</body>
+</html>
