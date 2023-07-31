@@ -27,15 +27,15 @@
   <tbody>
   <tr th:each="room, i: ${rooms}">
     <th scope="row"
-        th:text="${room.id}"
+        th:text="${room.roomId}"
         th:style="${i.odd} ? 'bg-light' : 'bg-white'"
     ></th>
     <td th:text="${room.floor}"></td>
-    <td th:text="${'pending'} +', '+ ${'pending'}"></td>
-    <td th:text="${'pending'}"></td>
+    <td th:text="${room.reservedByName}"></td>
+    <td th:text="${room.availableFrom}"></td>
     <td class="flex">
       <i class="fa fa-solid fa-bed"></i>
-      <p class="d-inline" th:text="${room.getCapacity()}"></p>
+      <p class="d-inline" th:text="${room.capacity}"></p>
     </td>
     <td>
       <button class="btn">

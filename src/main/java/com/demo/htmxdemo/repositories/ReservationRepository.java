@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ReservationRepository {
-    public boolean createReservation(Reservation reservation);
+    Reservation createReservation(Reservation reservation);
 
-    public Optional<Reservation> getReservationById(Long id);
+    Optional<Reservation> getReservationById(Long id);
 
-    public List<Reservation> getReservationsForRoom(String roomId);
+    List<Reservation> getReservationsForRoom(String roomId);
 
-    public List<Reservation> getReservationsForRoomBetweenDates(String roomId, LocalDate startDate, LocalDate endDate);
+    List<Reservation> getReservationsForRoomBetweenDates(String roomId, LocalDate startDate, LocalDate endDate);
 
-    public Optional<Reservation> deleteReservation(Long id);
+    Optional<Reservation> deleteReservation(Long id);
 }

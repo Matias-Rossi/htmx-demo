@@ -1,21 +1,21 @@
 package com.demo.htmxdemo.repositories;
 
 import com.demo.htmxdemo.models.Reservation;
-import com.demo.htmxdemo.models.Room;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.*;
-import java.util.function.BiConsumer;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 // Database integration is not relevant for this demo, thus it is not included
 @Component
 public class ReservationRepositoryImpl implements ReservationRepository {
-    private Map<Long, Reservation> reservations = new HashMap<>();
-    private Long lastId = Long.valueOf(0);
+    private final Map<Long, Reservation> reservations = new HashMap<>();
+    private Long lastId = 0L;
 
     @Autowired
     GuestRepository guestRepository;
@@ -24,7 +24,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     RoomRepository roomRepository;
 
     @Override
-    public boolean createReservation(Reservation reservation) {
+    public Reservation createReservation(Reservation reservation) {
         Long newId = lastId;
         reservation.setId(newId);
         reservations.put(newId, reservation);
@@ -36,7 +36,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         reservation.getGuest().addReservation(reservation);
         guestRepository.setGuest(reservation.getGuest());
 
-        return true;
+        return reservation;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     public List<Reservation> getReservationsForRoom(String roomId) {
         return reservations.values()
                 .stream()
-                .filter(res -> res.getRoom().getId() == roomId)
+                .filter(res -> res.getRoom().getId().equalsIgnoreCase(roomId))
                 .collect(Collectors.toList());
     }
 
@@ -56,7 +56,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     public List<Reservation> getReservationsForRoomBetweenDates(String roomId, LocalDate startDate, LocalDate endDate) {
         return reservations.values()
                 .stream()
-                .filter(res -> res.getRoom().getId() == roomId)
+                .filter(res -> res.getRoom().getId().equalsIgnoreCase(roomId))
                 .filter(res -> res.getStartDate().isAfter(startDate) || res.getStartDate().isEqual(startDate))
                 .filter(res -> res.getEndDate().isAfter(endDate) || res.getEndDate().isEqual(endDate))
                 .collect(Collectors.toList());

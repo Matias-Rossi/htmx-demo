@@ -4,7 +4,6 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Data
 public class Room {
@@ -31,4 +30,6 @@ public class Room {
     public void removeReservation(Reservation reservation) {
         reservations.remove(reservation);
     }
+
+
 }

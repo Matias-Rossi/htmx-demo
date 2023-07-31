@@ -1,5 +1,6 @@
 package com.demo.htmxdemo.controllers;
 
+import com.demo.htmxdemo.controllers.DTOs.RoomRowDTO;
 import com.demo.htmxdemo.models.Room;
 import com.demo.htmxdemo.repositories.RoomRepository;
 import com.demo.htmxdemo.services.RoomService;
@@ -25,7 +26,8 @@ public class RoomController {
     @HxRequest
     public String start(Model model) {
         List<Room> list = roomRepository.getAllRooms();
-        model.addAttribute("rooms", list);
+        List<RoomRowDTO> rows = list.stream().map(r -> roomService.toRoomRowDTO(r)).toList();
+        model.addAttribute("rooms", rows);
         return "/rooms/rooms";
     }
 }
